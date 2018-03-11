@@ -17,11 +17,11 @@ import android.view.View
 
 class MainActivity : AppCompatActivity() {
     var data: String = ""
-    var maxLine: Int = 5
+    var maxLine: Int = 2
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        for (i in 0..5) {
+        for (i in 0..10) {
             data += " Long Text"
         }
         println("onStart TextView's width " + textView.width)
