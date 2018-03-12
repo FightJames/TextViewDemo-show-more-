@@ -17,13 +17,14 @@ import android.view.View
 
 class MainActivity : AppCompatActivity() {
     var data: String = ""
-    var maxLine: Int = 2
+    var maxLine: Int = 5
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        for (i in 0..10) {
+        for (i in 0..100) {
             data += " Long Text"
         }
+        textView.setBackgroundResource(R.color.colorYellow)
         println("onStart TextView's width " + textView.width)
         limitTextView(data, textView, null,maxLine)
     }
@@ -54,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         if (textView == null) {
             return
         }
-        val showmore = "show more"
+        val showmore = "...show more"
         var width = textView.width//取得textView的寬度
         textView.measuredWidth
         println("TextView's width " + width)
@@ -75,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         }
         val sourceLength = explicitText!!.length
 
-        explicitText = "$explicitText...$showmore"
+        explicitText = "$explicitText$showmore"
         val mSpan = SpannableString(explicitText)
         mSpan.setSpan(object : ClickableSpan() {
             override fun updateDrawState(ds: TextPaint) {
@@ -90,7 +91,7 @@ class MainActivity : AppCompatActivity() {
                 println("click showmore")
                 textView.text = originData
                 textView.setOnClickListener(null)
-                Handler().postDelayed(Runnable {
+                Handler().postDelayed(Runnable {  //UI thread
                     if (clickListener != null)
                         textView.setOnClickListener(clickListener)//prevent the double click
                 }, 20)
