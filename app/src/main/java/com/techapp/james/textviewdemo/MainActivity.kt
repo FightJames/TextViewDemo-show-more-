@@ -58,14 +58,13 @@ class MainActivity : AppCompatActivity() {
         var width = textView.width//取得textView的寬度
         textView.measuredWidth
         println("TextView's width " + width)
-   //     if (width == 0) width = 1000//获取textview的实际宽度，这里可以用各种方式（一般是dp转px写死）填入TextView的宽度
         var lastCharIndex = getLastCharIndexForLimitTextView(textView, originData, width, maxLine)
         // println("LastCharIndex " + lastCharIndex + " sumIdx " + originData[lastCharIndex])
-        if (lastCharIndex < 0) {//如果行数没超过限制
+        if (lastCharIndex < 0) {//如果行數沒超過限制
             textView.text = originData
             return
         }
-        //如果超出了行数限制
+        //如果超出了行數限制
         textView.movementMethod = LinkMovementMethod.getInstance()//this will deprive the recyclerView's focus
 
         var explicitText: String? = ""
@@ -81,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         mSpan.setSpan(object : ClickableSpan() {
             override fun updateDrawState(ds: TextPaint) {
                 super.updateDrawState(ds)
-                ds.color = textView.resources.getColor(R.color.material_blue_grey_800) //default is red
+                ds.color = textView.textColors.defaultColor //default text color
                 //it will make show more tag Red
                 ds.isAntiAlias = true  //抗鋸齒
                 ds.isUnderlineText = false //show more under line
