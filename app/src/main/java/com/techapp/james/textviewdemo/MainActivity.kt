@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onClick(widget: View) {//"...show more" click event
-                println("Alex  click showmore")
+                println("click showmore")
                 textView.text = originData
                 textView.setOnClickListener(null)
                 Handler().postDelayed(Runnable {
